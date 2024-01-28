@@ -142,11 +142,9 @@ if presplash_lottie not in (False, None):
 
 if wakelock not in (False, None):
     commands.append("--wakelock")
-    commands.append(str(wakelock))
 
 if window not in (False, None):
     commands.append("--window")
-    commands.append(str(window))
 
 if blacklist not in (False, None):
     commands.append("--blacklist")
@@ -174,11 +172,9 @@ if add_source not in (False, None):
 
 if no_byte_compile_python not in (False, None):
     commands.append("--no-byte-compile-python")
-    commands.append(str(no_byte_compile_python))
 
 if enable_androidx not in (False, None):
     commands.append("--enable-androidx")
-    commands.append(str(enable_androidx))
 
 if add_resource not in (False, None):
     commands.append("--add-resource")
@@ -194,21 +190,20 @@ if dist_name not in (False, None):
     commands.append(str(dist_name))
 
 if blacklist_requirements not in (False, None):
-    for i in blacklist_requirements:
-        commands.append("--blacklist-requirements")
-        commands.append(str(i))
+    commands.append("--blacklist-requirements")
+    commands.append(",".join(blacklist_requirements))
 
 if requirements not in (False, None):
     commands.append("--requirements")
-    commands.append(" ".join(requirements))
+    commands.append(",".join(requirements))
 
 if recipe_blacklist not in (False, None):
     commands.append("--recipe-blacklist")
-    commands.append(str(recipe_blacklist))
+    commands.append(",".join(recipe_blacklist))
 
 if local_recipes not in (False, None):
     commands.append("--local-recipes")
-    commands.append(str(local_recipes))
+    commands.append(",".join(local_recipes))
 
 if activity_class_name not in (False, None):
     commands.append("--activity-class-name")
@@ -228,7 +223,6 @@ if add_asset not in (False, None):
 
 if with_debug_symbols not in (False, None):
     commands.append("--with-debug-symbols")
-    commands.append(str(with_debug_symbols))
 
 if keystore not in (False, None):
     commands.append("--keystore")
@@ -248,7 +242,6 @@ if signkeypw not in (False, None):
 
 if force_build not in (False, None):
     commands.append("--force-build")
-    commands.append(str(force_build))
 
 if require_perfect_match not in (False, None):
     commands.append("--require-perfect-match")
@@ -256,15 +249,15 @@ if require_perfect_match not in (False, None):
 
 if copy_libs not in (False, None):
     commands.append("--copy-libs")
-    commands.append(str(copy_libs))
 
 if debug not in (False, None):
     commands.append("--debug")
-    commands.append(str(debug))
 
 if color not in (False, None):
     commands.append("--color")
     commands.append(str(color))
 
+
+print("\nRunning Command:", commands, "\n")
 
 subprocess.run(commands)

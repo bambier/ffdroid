@@ -4,7 +4,7 @@ version: "1.0.0" # The version number.
 icon: "assets/icon.png" # A path to the png file to use as the application icon.
 
 debug: on
-force-build: on # Whether the distribution must be compiled from scratch.
+force-build: # Whether the distribution must be compiled from scratch.
 
 private: "/home/nima/Desktop/python-projects/ffdroid/src/" # The directory containing your project files.
 sdk-dir: "/home/nima/Android/Sdk/cmdline-tools/" #
@@ -24,8 +24,8 @@ bootstrap: sdl2
 
 blacklist-requirements:
     - openssl
-    - libffi
     - sqlite3
+    - libffi
     - kivy
 
 requirements:
@@ -36,40 +36,40 @@ enable-androidx: on # Enable AndroidX support library.
 
 no-byte-compile-python: on # Skip byte compile for .py files.
 
-orientation:
-    # The orientations that the app will display in.
-    # (Available options are portrait, landscape, portrait-reverse, landscape-reverse).
-    # Since Android ignores android:screenOrientation when in multi-window mode (Which
-    # is the default on Android 12+), this option will also set the window orientation
-    # hints for the SDL bootstrap. If multiple orientations are given, android:screenOrientation
-    # will be set to unspecified.
+orientation: portrait
+# The orientations that the app will display in.
+# (Available options are portrait, landscape, portrait-reverse, landscape-reverse).
+# Since Android ignores android:screenOrientation when in multi-window mode (Which
+# is the default on Android 12+), this option will also set the window orientation
+# hints for the SDL bootstrap. If multiple orientations are given, android:screenOrientation
+# will be set to unspecified.
 
 manifest-orientation:
-    # The orientation that will be set for the android:screenOrientation attribute
-    # of the activity in the AndroidManifest.xml file. If not set, the value will
-    # be synthesized from the --orientation option. The full list of valid options
-    # is given under android:screenOrientation in the Android documentation.
+# The orientation that will be set for the android:screenOrientation attribute
+# of the activity in the AndroidManifest.xml file. If not set, the value will
+# be synthesized from the --orientation option. The full list of valid options
+# is given under android:screenOrientation in the Android documentation.
 
 permission:
-    # A permission that needs to be declared into the App AndroidManifest.xml. For multiple
-    # permissions, add multiple --permission arguments. --home-app Gives you the option to
-    # set your application as a home app (launcher) on your Android device.
-    # Note
-    # --permission accepts the following syntaxes:
-    # --permission (name=android.permission.WRITE_EXTERNAL_STORAGE;maxSdkVersion=18)
-    # or --permission android.permission.WRITE_EXTERNAL_STORAGE.
-    # The first syntax is used to set additional properties to the permission
-    # (android:maxSdkVersion and android:usesPermissionFlags are the only ones supported for now).
-    # The second one can be used when there’s no need to add any additional properties.
-    # Warning
-    # The syntax --permission VIBRATE (only the permission name, without the prefix),
-    # is also supported for backward compatibility, but it will be removed in the future.
+# A permission that needs to be declared into the App AndroidManifest.xml. For multiple
+# permissions, add multiple --permission arguments. --home-app Gives you the option to
+# set your application as a home app (launcher) on your Android device.
+# Note
+# --permission accepts the following syntaxes:
+# --permission (name=android.permission.WRITE_EXTERNAL_STORAGE;maxSdkVersion=18)
+# or --permission android.permission.WRITE_EXTERNAL_STORAGE.
+# The first syntax is used to set additional properties to the permission
+# (android:maxSdkVersion and android:usesPermissionFlags are the only ones supported for now).
+# The second one can be used when there’s no need to add any additional properties.
+# Warning
+# The syntax --permission VIBRATE (only the permission name, without the prefix),
+# is also supported for backward compatibility, but it will be removed in the future.
 
 meta-data: # Custom key=value pairs to add in the application metadata.
 
 presplash: # A path to the image file to use as a screen while the application is loading.
 
-presplash-color: # The presplash screen background color, of the form #RRGGBB or a color name red, green, blue etc.
+presplash-color: "#8A38FF" # The presplash screen background color, of the form #RRGGBB or a color name red, green, blue etc.
 
 presplash-lottie: # use a lottie (json) file as a presplash animation. If used, this will replace the static presplash image.
 
@@ -98,8 +98,8 @@ local-recipes:
 activity-class-name:
 service-class-name:
 java-build-tool:
-    #  The java build tool to use when packaging the APK, defaults to automatically selecting an appropriate tool.
-    # --add-asset ASSETS    Put this in the assets folder in the apk.
+#  The java build tool to use when packaging the APK, defaults to automatically selecting an appropriate tool.
+# --add-asset ASSETS    Put this in the assets folder in the apk.
 
 add-asset:
 with-debug-symbols: # Will keep debug symbols from `.so` files.

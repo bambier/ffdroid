@@ -1,0 +1,113 @@
+name: "My Application" # The app name.
+package: "com.emxample" # The Java package name for your project. e.g. org.example.yourapp.
+version: "1.0.0" # The version number.
+icon: "assets/icon.png" # A path to the png file to use as the application icon.
+
+debug: on
+force-build: on # Whether the distribution must be compiled from scratch.
+
+private: "/home/nima/Desktop/python-projects/ffdroid/src/" # The directory containing your project files.
+sdk-dir: "/home/nima/Android/Sdk/cmdline-tools/" #
+ndk-dir: "/home/nima/Android/Sdk/ndk/26.1.10909125" #
+android-api: 33 # Target API version of your application
+ndk-api: 21 # Minimum supported API version of your application
+storage-dir: "/home/nima/Desktop/python-projects/ffdroid/build" #  Primary storage directory for downloads and builds (default: ~/.local/share/python-for-android)
+
+arch:
+    - armeabi
+    - armeabi-v7a
+    - x86
+    - x86_64
+    - arm64-v8a
+
+bootstrap: sdl2
+
+blacklist-requirements:
+    - openssl
+    - libffi
+    - sqlite3
+    - kivy
+
+requirements:
+    - flet
+    - plyer
+
+enable-androidx: on # Enable AndroidX support library.
+
+no-byte-compile-python: on # Skip byte compile for .py files.
+
+orientation:
+    # The orientations that the app will display in.
+    # (Available options are portrait, landscape, portrait-reverse, landscape-reverse).
+    # Since Android ignores android:screenOrientation when in multi-window mode (Which
+    # is the default on Android 12+), this option will also set the window orientation
+    # hints for the SDL bootstrap. If multiple orientations are given, android:screenOrientation
+    # will be set to unspecified.
+
+manifest-orientation:
+    # The orientation that will be set for the android:screenOrientation attribute
+    # of the activity in the AndroidManifest.xml file. If not set, the value will
+    # be synthesized from the --orientation option. The full list of valid options
+    # is given under android:screenOrientation in the Android documentation.
+
+permission:
+    # A permission that needs to be declared into the App AndroidManifest.xml. For multiple
+    # permissions, add multiple --permission arguments. --home-app Gives you the option to
+    # set your application as a home app (launcher) on your Android device.
+    # Note
+    # --permission accepts the following syntaxes:
+    # --permission (name=android.permission.WRITE_EXTERNAL_STORAGE;maxSdkVersion=18)
+    # or --permission android.permission.WRITE_EXTERNAL_STORAGE.
+    # The first syntax is used to set additional properties to the permission
+    # (android:maxSdkVersion and android:usesPermissionFlags are the only ones supported for now).
+    # The second one can be used when there’s no need to add any additional properties.
+    # Warning
+    # The syntax --permission VIBRATE (only the permission name, without the prefix),
+    # is also supported for backward compatibility, but it will be removed in the future.
+
+meta-data: # Custom key=value pairs to add in the application metadata.
+
+presplash: # A path to the image file to use as a screen while the application is loading.
+
+presplash-color: # The presplash screen background color, of the form #RRGGBB or a color name red, green, blue etc.
+
+presplash-lottie: # use a lottie (json) file as a presplash animation. If used, this will replace the static presplash image.
+
+wakelock: # If the argument is included, the application will prevent the device from sleeping.
+
+window: # If the argument is included, the application will not cover the Android status bar.
+
+blacklist: # The path to a file containing blacklisted patterns that will be excluded from the final APK. Defaults to ./blacklist.txt.
+
+whitelist: # The path to a file containing whitelisted patterns that will be included in the APK even if also blacklisted.
+
+add-jar: # The path to a .jar file to include in the APK. To include multiple jar files, pass this argument multiple times.
+
+intent-filters: # A file path containing intent filter xml to be included in AndroidManifest.xml.
+
+service: # A service name and the Python script it should run. See Arbitrary service scripts.
+
+add-source: # Add a source directory to the app’s Java code.
+
+add-resource: # Put this file or directory in the apk res directory.
+
+dist-name:
+
+recipe-blacklist:
+local-recipes:
+activity-class-name:
+service-class-name:
+java-build-tool:
+    #  The java build tool to use when packaging the APK, defaults to automatically selecting an appropriate tool.
+    # --add-asset ASSETS    Put this in the assets folder in the apk.
+
+add-asset:
+with-debug-symbols: # Will keep debug symbols from `.so` files.
+keystore: # Keystore for JAR signing key, will use jarsigner default if not specified (release build only)
+signkey: # Key alias to sign PARSER_APK. with (release build only)
+keystorepw: # Password for keystore
+signkeypw: # Password for key alias
+require-perfect-match:
+copy-libs:
+
+color: # {always,never,auto} Enable or disable color output (default enabled on tty)

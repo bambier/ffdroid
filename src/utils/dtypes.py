@@ -1,5 +1,5 @@
-import typing
 import types
+import typing
 from gettext import GNUTranslations
 
 

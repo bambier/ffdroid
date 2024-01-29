@@ -4,9 +4,9 @@ from pathlib import Path
 
 import flet as ft
 
-from utils.translation import set_current_language, gettext_lazy as _
+from utils.translation import gettext_lazy as _
+from utils.translation import set_current_language
 from views.BaseView import BaseView
-
 
 # Codes
 
@@ -14,7 +14,6 @@ BASE_DIR = Path().parent
 
 
 class Application(ft.Control):
-    title = _("My App")
 
     def __init__(self, page: ft.Page, *args, **kwargs) -> None:
         super(ft.Control, self).__init__(*args, **kwargs)
@@ -29,9 +28,7 @@ class Application(ft.Control):
             lang=self.page.client_storage.get("lang") or "en",
             page=self.page)
 
-        self.pages_list = {}
-
-        self.page.title = self.title
+        self.page.title = _("My App")
         self.get_views_dynamic()
 
         self.update()
@@ -48,7 +45,7 @@ class Application(ft.Control):
         self.page.on_route_change = self.on_route_change
 
         import importlib
-
+        self.pages_list = {}
         for view in views_files:
             view = view.replace(".py", "")
             module = importlib.import_module(f"views.{view}")
@@ -65,5 +62,5 @@ class Application(ft.Control):
 
 
 if __name__ == "__main__":
-    ft.app(target=Application, name=Application.title,
+    ft.app(target=Application,
            view=ft.AppView.FLET_APP, assets_dir=BASE_DIR / "assets", use_color_emoji=True)

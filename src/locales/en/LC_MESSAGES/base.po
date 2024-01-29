@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-26 18:27+0330\n"
+"POT-Creation-Date: 2024-01-29 01:26+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/main.py:14
+#: src/main.py:14 src/main.py:17
 msgid "My App"
 msgstr ""
 
-#: src/views/HomeView.py:19
+#: src/views/HomeView.py:19 src/views/HomeView.py:21
 msgid "Hello"
 msgstr ""
 
-#: src/components/AppBar.py:8
+#: src/components/AppBar.py:8 src/components/AppBar.py:12
 msgid "AppBar Example"
 msgstr ""
 
-#: src/components/AppBar.py:16
+#: src/components/AppBar.py:16 src/components/AppBar.py:20
 msgid "Item 1"
 msgstr ""
 
-#: src/components/AppBar.py:19
+#: src/components/AppBar.py:19 src/components/AppBar.py:23
 msgid "Checked item"
 msgstr ""

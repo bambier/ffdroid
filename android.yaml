@@ -8,15 +8,16 @@ force-build: # Whether the distribution must be compiled from scratch.
 
 private: "/home/nima/Desktop/python-projects/ffdroid/src/" # The directory containing your project files.
 sdk-dir: "/home/nima/Android/Sdk/cmdline-tools/" #
-ndk-dir: "/home/nima/Android/Sdk/ndk/26.1.10909125" #
+# ndk-dir: "/home/nima/Android/Sdk/ndk/26.1.10909125" #
+ndk-dir: "/home/nima/Android/Sdk/ndk/25.2.9519653" #
 android-api: 33 # Target API version of your application
 ndk-api: 21 # Minimum supported API version of your application
-storage-dir: "/home/nima/Desktop/python-projects/ffdroid/build" #  Primary storage directory for downloads and builds (default: ~/.local/share/python-for-android)
+# storage-dir: "/home/nima/Desktop/python-projects/ffdroid/build" #  Primary storage directory for downloads and builds (default: ~/.local/share/python-for-android)
 
 arch:
-    - armeabi
+    # - armeabi
     - armeabi-v7a
-    - x86
+    # - x86
     - x86_64
     - arm64-v8a
 
@@ -34,7 +35,9 @@ requirements:
 
 enable-androidx: on # Enable AndroidX support library.
 
-no-byte-compile-python: on # Skip byte compile for .py files.
+# no-byte-compile-python: on # Skip byte compile for .py files.
+
+dist-name: "mydist"
 
 orientation: portrait
 # The orientations that the app will display in.
@@ -90,8 +93,6 @@ service: # A service name and the Python script it should run. See Arbitrary ser
 add-source: # Add a source directory to the app’s Java code.
 
 add-resource: # Put this file or directory in the apk res directory.
-
-dist-name:
 
 recipe-blacklist:
 local-recipes:

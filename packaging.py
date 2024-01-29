@@ -13,7 +13,7 @@ with open("android.yaml", "r") as file:
     data: dict = yaml.load(file.read(), yaml.Loader)
 
 
-commands = ["p4a", "create", "apk"]
+commands = ["p4a", "create"]
 
 name = data.get("name", None)
 package = data.get("package", None)

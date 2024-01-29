@@ -19,6 +19,7 @@ name = data.get("name", None)
 package = data.get("package", None)
 version = data.get("version", None)
 icon = data.get("icon", None)
+release = data.get("release", None)
 private = data.get("private", None)
 sdk_dir = data.get("sdk-dir", None)
 ndk_dir = data.get("ndk-dir", None)
@@ -256,6 +257,9 @@ if debug not in (False, None):
 if color not in (False, None):
     commands.append("--color")
     commands.append(str(color))
+
+if release not in (False, None):
+    commands.append("--release")
 
 
 print("\nRunning Command:", commands, "\n")

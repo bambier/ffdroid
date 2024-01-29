@@ -3,6 +3,7 @@ package: "com.emxample" # The Java package name for your project. e.g. org.examp
 version: "1.0.0" # The version number.
 icon: "assets/icon.png" # A path to the png file to use as the application icon.
 
+release: on
 debug: on
 force-build: # Whether the distribution must be compiled from scratch.
 
@@ -39,6 +40,8 @@ enable-androidx: on # Enable AndroidX support library.
 
 dist-name: "mydist"
 
+presplash-color: "#8A38FF" # The presplash screen background color, of the form #RRGGBB or a color name red, green, blue etc.
+
 orientation: portrait
 # The orientations that the app will display in.
 # (Available options are portrait, landscape, portrait-reverse, landscape-reverse).
@@ -71,8 +74,6 @@ permission:
 meta-data: # Custom key=value pairs to add in the application metadata.
 
 presplash: # A path to the image file to use as a screen while the application is loading.
-
-presplash-color: "#8A38FF" # The presplash screen background color, of the form #RRGGBB or a color name red, green, blue etc.
 
 presplash-lottie: # use a lottie (json) file as a presplash animation. If used, this will replace the static presplash image.
 
@@ -111,4 +112,4 @@ signkeypw: # Password for key alias
 require-perfect-match:
 copy-libs:
 
-color: # {always,never,auto} Enable or disable color output (default enabled on tty)
+color: "always" # {always,never,auto} Enable or disable color output (default enabled on tty)

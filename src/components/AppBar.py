@@ -4,6 +4,8 @@ from utils.translation import gettext_lazy as _
 
 
 class AppBar(ft.AppBar):
+    """Top App bar and menu
+    """
 
     def __init__(self, page: ft.Page, *args, **kwargs):
         super(AppBar, self).__init__(*args, **kwargs)

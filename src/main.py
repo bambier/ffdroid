@@ -28,12 +28,12 @@ class Application(ft.Control):
 
         set_current_language(
             lang=self.page.client_storage.get("lang") or "en",
-            page=self.page)
+            page=self.page,
+        )
 
         self.page.title = _("My App")
 
         self.page.on_route_change = self.on_route_change
-        # self.page.on_view_pop = self.on_view_pop
         self.get_views()
         self.page.go("/")
 
@@ -88,17 +88,13 @@ class Application(ft.Control):
         self.page.window_bgcolor = ft.colors.WHITE
 
     def on_route_change(self, event: ft.RouteChangeEvent, *args, **kwargs):
+        """Gets new route and changes page to given route
+        """
         logger.debug("Changing route to %s" % event.route)
         self.page.views.clear()
         view: BaseView = self.pages_list.get(event.route)
         self.page.views.append(view)
         self.update()
-
-    # def on_view_pop(self, *args, **kwargs):
-    #     logger.debug(args, kwargs)
-    #     self.page.views.pop()
-    #     top_view = self.page.views[-1]
-    #     self.page.go(top_view.route)
 
 
 if __name__ == "__main__":

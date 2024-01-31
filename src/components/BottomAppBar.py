@@ -4,6 +4,8 @@ from utils.translation import gettext_lazy as _
 
 
 class BottomAppBar(ft.BottomAppBar):
+    """Buttom navigation menu
+    """
 
     def __init__(self, *args, **kwargs):
         super(BottomAppBar, self).__init__(*args, **kwargs)

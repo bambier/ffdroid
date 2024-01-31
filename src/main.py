@@ -8,7 +8,6 @@ from utils.logger import logger
 from utils.translation import gettext_lazy as _
 from utils.translation import set_current_language
 from views.BaseView import BaseView
-
 # Codes
 
 

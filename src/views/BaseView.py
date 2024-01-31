@@ -2,6 +2,8 @@ import flet as ft
 
 from utils.logger import logger
 from utils.translation import get_current_language, set_current_language
+import os
+import sys
 
 
 class BaseView(ft.View):
@@ -25,6 +27,7 @@ class BaseView(ft.View):
                 case _:
                     logger.error(f"Error in changing language {clang} --> en")
                     set_current_language(page=self.page, lang="en")
+            self.restart_app()
 
     @classmethod
     def __repr__(cls):
@@ -37,3 +40,7 @@ class BaseView(ft.View):
     @property
     def name(self) -> str:
         return str(self.__class__.__name__[:-4])
+
+    def restart_app(self):
+        python = sys.executable
+        os.execl(python, python, *sys.argv)

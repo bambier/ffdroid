@@ -25,3 +25,4 @@ Compile to `.mo` with
 ### TODO
 
 - [ ] I18n is not working when switching language
+    * [X] it works after app restarts but not in real time. Its nececry to restart app

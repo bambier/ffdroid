@@ -92,13 +92,13 @@ add-resource: # Put this file or directory in the apk res directory.
 
 recipe-blacklist:
 local-recipes:
+
 activity-class-name:
 service-class-name:
-java-build-tool:
-#  The java build tool to use when packaging the APK, defaults to automatically selecting an appropriate tool.
-# --add-asset ASSETS    Put this in the assets folder in the apk.
 
-add-asset:
+java-build-tool: #  The java build tool to use when packaging the APK, defaults to automatically selecting an appropriate tool.
+
+add-asset: # Put this in the assets folder in the apk.
 with-debug-symbols: # Will keep debug symbols from `.so` files.
 keystore: # Keystore for JAR signing key, will use jarsigner default if not specified (release build only)
 signkey: # Key alias to sign PARSER_APK. with (release build only)

@@ -24,6 +24,7 @@ arch:
 bootstrap: sdl2
 
 blacklist-requirements:
+    - kivy
 
 requirements:
     - flet

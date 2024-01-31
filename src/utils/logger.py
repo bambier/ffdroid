@@ -1,9 +1,13 @@
 import logging
 
+# Codes
+
+DEBUG = True
+
 logger = logging.getLogger("application")
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.DEBUG if DEBUG else logging.CRITICAL)
 handler = logging.StreamHandler()
-handler.setLevel(logging.DEBUG)
+handler.setLevel(logging.DEBUG if DEBUG else logging.CRITICAL)
 
 
 formatter = logging.Formatter(

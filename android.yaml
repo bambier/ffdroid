@@ -1,16 +1,15 @@
 name: "My Application" # The app name.
 package: "com.emxample" # The Java package name for your project. e.g. org.example.yourapp.
 version: "1.0.0" # The version number.
-icon: "assets/icon.png" # A path to the png file to use as the application icon.
+icon: "assets/icons/icon.png" # A path to the png file to use as the application icon.
 
 release: on
 debug: on
 force-build: # Whether the distribution must be compiled from scratch.
 
 private: "/home/nima/Desktop/python-projects/ffdroid/src/" # The directory containing your project files.
-sdk-dir: "/home/nima/Android/Sdk/cmdline-tools/" #
-# ndk-dir: "/home/nima/Android/Sdk/ndk/26.1.10909125" #
-ndk-dir: "/home/nima/Android/Sdk/ndk/25.2.9519653" #
+sdk-dir: "/home/nima/Android/Sdk/cmdline-tools/"
+ndk-dir: "/home/nima/Android/Sdk/ndk/25.2.9519653"
 android-api: 33 # Target API version of your application
 ndk-api: 21 # Minimum supported API version of your application
 # storage-dir: "/home/nima/Desktop/python-projects/ffdroid/build" #  Primary storage directory for downloads and builds (default: ~/.local/share/python-for-android)
@@ -25,10 +24,6 @@ arch:
 bootstrap: sdl2
 
 blacklist-requirements:
-    - openssl
-    - sqlite3
-    - libffi
-    - kivy
 
 requirements:
     - flet

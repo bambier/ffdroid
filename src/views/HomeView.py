@@ -16,7 +16,7 @@ class HomeView(BaseView):
         super().__init__(*args, **kwargs)
 
         self.bottom_appbar = BottomAppBar()
-        self.appbar = AppBar()
+        self.appbar = AppBar(page=self.page)
 
         self.controls.append(
             ft.OutlinedButton(text=_("Hello"), on_click=self.chlang)

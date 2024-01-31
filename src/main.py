@@ -25,11 +25,7 @@ class Application(ft.Control):
         self.page = page
         self.update = self.page.update
 
-        self.page.window_width = 420
-        self.page.window_height = 840
-
-        self.page.theme_mode = "light"
-        self.page.window_bgcolor = ft.colors.WHITE
+        self.set_theme()
 
         set_current_language(
             lang=self.page.client_storage.get("lang") or "en",
@@ -37,13 +33,16 @@ class Application(ft.Control):
 
         self.page.title = _("My App")
 
-        self.get_views()
         self.page.on_route_change = self.on_route_change
+        # self.page.on_view_pop = self.on_view_pop
+        self.get_views()
         self.page.go("/")
 
         self.update()
 
-    def get_views(self):
+    def get_views(self) -> None:
+        """Get views dynamically and put them in `page.views`
+        """
         self.page.views.clear()
         views_names = filter(lambda x:
                              x.endswith("View.py") and x != "BaseView.py",
@@ -57,16 +56,50 @@ class Application(ft.Control):
             module = importlib.import_module(f"views.{view_name}")
             view_class: BaseView = getattr(module, view_name)
 
-            self.page.views.append(
-                view_class(page=self.page, route=view_class.route),
-            )
+            self.pages_list.update({
+                view_class.route:
+                    view_class(page=self.page, route=view_class.route)
+            })
 
-        self.update()
+    def set_theme(self) -> None:
+        """Set theme, page size and define fonts
+        """
+        self.page.fonts = {
+            "Vazirmatn-Thin": "assets/fonts/Vazirmatn/Vazirmatn-RD-UI-Thin.ttf",
+            "Vazirmatn-SemiBold": "assets/fonts/Vazirmatn/Vazirmatn-RD-UI-SemiBold.ttf",
+            "Vazirmatn-Regular": "assets/fonts/Vazirmatn/Vazirmatn-RD-UI-Regular.ttf",
+            "Vazirmatn-Medium": "assets/fonts/Vazirmatn/Vazirmatn-RD-UI-Medium.ttf",
+            "Vazirmatn-Light": "assets/fonts/Vazirmatn/Vazirmatn-RD-UI-Light.ttf",
+            "Vazirmatn-ExtraLight": "assets/fonts/Vazirmatn/Vazirmatn-RD-UI-ExtraLight.ttf",
+            "Vazirmatn-ExtraBold": "assets/fonts/Vazirmatn/Vazirmatn-RD-UI-ExtraBold.ttf",
+            "Vazirmatn-Bold": "assets/fonts/Vazirmatn/Vazirmatn-RD-UI-Bold.ttf",
+            "Vazirmatn-Black": "assets/fonts/Vazirmatn/Vazirmatn-RD-UI-Black.ttf",
+        }
+        self.page.theme = ft.Theme(
+            font_family="Vazirmatn-Regular",
+            use_material3=True,
+        )
+
+        self.page.window_width = 420
+        self.page.window_height = 840
+
+        self.page.padding = 0
+
+        self.page.theme_mode = "light"
+        self.page.window_bgcolor = ft.colors.WHITE
 
     def on_route_change(self, event: ft.RouteChangeEvent, *args, **kwargs):
+        logger.debug("Changing route to %s" % event.route)
         self.page.views.clear()
-        self.get_views()
+        view: BaseView = self.pages_list.get(event.route)
+        self.page.views.append(view)
         self.update()
+
+    # def on_view_pop(self, *args, **kwargs):
+    #     logger.debug(args, kwargs)
+    #     self.page.views.pop()
+    #     top_view = self.page.views[-1]
+    #     self.page.go(top_view.route)
 
 
 if __name__ == "__main__":

@@ -1,32 +1,39 @@
-from flet import Container, Page, View
+import flet as ft
 
-from utils.translation import get_current_language
-from utils.translation import gettext_lazy as _
-from utils.translation import set_current_language
+from utils.logger import logger
+from utils.translation import get_current_language, set_current_language
 
 
-class BaseView(Container):
-    view: View
-    name: str
-    route: str
+class BaseView(ft.View):
+    page: ft.Page
 
-    def __init__(self, page: Page, *args, **kwargs) -> None:
-        super(Container, self).__init__(*args, **kwargs)
-        self.expand = True
+    def __init__(self, page: ft.Page, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
         self.page = page
-        self.name = self.__class__.__name__[:-4]
 
-    def chlang(self, *args, **kwargs) -> None:
+    def chlang(self, event: ft.ControlEvent, lang=None, *args, **kwargs) -> None:
         clang = get_current_language()
-        match clang:
-            case "en":
-                print("en --> fa")
-                set_current_language(page=self.page, lang="fa")
-            case "fa":
-                print("fa --> en")
-                set_current_language(page=self.page, lang="en")
-            case _:
-                print(f"Error language {clang} --> en")
-                set_current_language(page=self.page, lang="en")
+        if lang is not None:
+            set_current_language(page=self.page, lang=lang)
+        else:
+            match clang:
+                case "en":
+                    logger.debug("")
+                    set_current_language(page=self.page, lang="fa")
+                case "fa":
+                    set_current_language(page=self.page, lang="en")
+                case _:
+                    logger.error(f"Error in changing language {clang} --> en")
+                    set_current_language(page=self.page, lang="en")
 
-        self.page.update()
+    @classmethod
+    def __repr__(cls):
+        return str(f'<{cls.name}View route="{cls.route}" lang="{get_current_language()}">')
+
+    @classmethod
+    def __str__(cls):
+        return str(cls.__class__.__name__)
+
+    @property
+    def name(self) -> str:
+        return str(self.__class__.__name__[:-4])

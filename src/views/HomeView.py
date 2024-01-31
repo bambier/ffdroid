@@ -2,6 +2,7 @@ import flet as ft
 
 from components.AppBar import AppBar
 from components.BottomAppBar import BottomAppBar
+from utils.logger import logger
 from utils.translation import gettext_lazy as _
 from views.BaseView import BaseView
 
@@ -9,17 +10,14 @@ from views.BaseView import BaseView
 
 
 class HomeView(BaseView):
-    name = "Home"
     route = "/"
 
     def __init__(self, *args, **kwargs) -> None:
-        super(HomeView, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
-        self.view = ft.View(
-            route="/",
-            controls=[
-                ft.OutlinedButton(text=_("Hello"), on_click=self.chlang)
-            ],
-            bottom_appbar=BottomAppBar(),
-            appbar=AppBar()
+        self.bottom_appbar = BottomAppBar()
+        self.appbar = AppBar()
+
+        self.controls.append(
+            ft.OutlinedButton(text=_("Hello"), on_click=self.chlang)
         )

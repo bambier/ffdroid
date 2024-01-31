@@ -6,7 +6,7 @@ from utils.translation import gettext_lazy as _
 class BottomAppBar(ft.BottomAppBar):
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(BottomAppBar, self).__init__(*args, **kwargs)
         self.bgcolor = "#8F0FFF"
         self.shape = ft.NotchShape.CIRCULAR
         self.content = ft.Row(

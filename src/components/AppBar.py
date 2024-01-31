@@ -1,12 +1,13 @@
 import flet as ft
-
+from utils.logger import logger
 from utils.translation import gettext_lazy as _
 
 
 class AppBar(ft.AppBar):
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(AppBar, self).__init__(*args, **kwargs)
+        logger.debug("Initilizing App bar")
         self.leading = ft.Icon(ft.icons.PALETTE)
         self.leading_width = 40
         self.title = ft.Text(_("AppBar Example"), color=ft.colors.WHITE)

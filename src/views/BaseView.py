@@ -27,7 +27,6 @@ class BaseView(ft.View):
         else:
             match clang:
                 case "en":
-                    logger.debug("")
                     set_current_language(page=self.page, lang="fa")
                 case "fa":
                     set_current_language(page=self.page, lang="en")
@@ -52,4 +51,4 @@ class BaseView(ft.View):
         """Restats application after changing language
         """
         python = sys.executable
-        os.execl(python, python, *sys.argv)
+        os.execl(python, python, *sys.argv, "--route", self.page.route)

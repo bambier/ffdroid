@@ -98,6 +98,7 @@ class Application(ft.Control):
 
 
 if __name__ == "__main__":
+    
     ft.app(
         target=Application,
         view=ft.AppView.FLET_APP,
